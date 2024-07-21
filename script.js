@@ -1,9 +1,10 @@
 let birthdayDate = new Date('2024-07-23T00:00:00').getTime();
-let currentDate = new Date('2024-07-21T04:30:00').getTime();
+let currentDate = new Date().getTime();
 let timeLeft = birthdayDate - currentDate;
 
 function updateCountdown() {
     const countdownElement = document.getElementById("countdown");
+    const messageElement = document.getElementById("message");
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
@@ -16,7 +17,8 @@ function updateCountdown() {
 
     if (timeLeft <= 0) {
         // Birthday has passed
-        countdownElement.innerHTML = "<h2>Happy Birthday!</h2>";
+        countdownElement.innerHTML = "";
+        messageElement.textContent = "Happy Birthday!";
         confettiEffect();
         return;
     }
